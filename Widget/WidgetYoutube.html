@@ -1,0 +1,63 @@
+<!-- 10/2/19 Looks GOOD! (Went over with Shiyu) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <!-- my style -->
+    <link rel="stylesheet" href="../styles.css" />
+    <!-- kit code from font awesome -->
+    <script src="https://kit.fontawesome.com/e4492dae8c.js" crossorigin="anonymous"></script>
+
+    <title>Widget Youtube</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div>
+            <a href=WidgetList.html class="text-dark">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <span class="navbar-brand h1 ml-4 mb-0 text-secondary">Widget Edit</span>
+        </div>
+        <a class="text-dark" href="WidgetList.html">
+            <i class="fas fa-check"></i>
+        </a>
+    </nav>
+    <main class="container">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter Widget Name..." />
+            </div>
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" placeholder="Enter Widget Text..." id="text" />
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" class="form-control" placeholder="Enter YouTube Address..." id="url" />
+            </div>
+            <div class="form-group">
+                <label for="width">Width</label>
+                <input type="range" min="1" max="100" class="form-control" id="width" />
+            </div>
+            <a href=WidgetList.html class="btn btn-danger btn-block">Delete
+            </a>
+        </form>
+    </main>
+    <!-- bottom navbar -->
+    <footer class="navbar navbar-light bg-light fixed-bottom">
+        <span></span>
+        <a class="text-dark" href="../User/Profile.html">
+            <i class="fas fa-user"></i></a>
+    </footer>
+</body>
+
+</html>
