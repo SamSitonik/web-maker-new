@@ -1,4 +1,3 @@
-<!-- 10/1/2019 Looks Good Sitonik -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,85 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <!-- my style -->
+    <link 
+        rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous" 
+    />
+<!-- my style -->
     <link rel="stylesheet" href="../styles.css" />
-    <!-- kit code from font awesome -->
-    <script src="https://kit.fontawesome.com/e4492dae8c.js" crossorigin="anonymous"></script>
-    <title>New Website</title>
+<!-- kit code from font awesome -->
+    <script 
+    src="https://kit.fontawesome.com/e4492dae8c.js" 
+    crossorigin="anonymous">
+    </script>
+    <title>Website New</title>
 </head>
-
 <body>
     <nav class="navbar-dark bg-primary fixed-top row">
-        <!-- Left navbar -->
+    <!-- Left navbar -->
         <div class="col-lg-3 d-none d-lg-block">
             <div class="navbar">
                 <div>
                     <a class="text-light" href="WebsiteList.html">
                         <i class="fas fa-chevron-left"></i>
                     </a>
-                    <span class="navbar-brand h1 mb-0 ml-4">Websites</span>
+                    <span class="navbar-brand h1 mb-0 ml-4">Websites
+                    </span>
                 </div>
-                <a class="text-light" href="WebsiteList.html">
-                    <i class="fas fa-plus"></i>
-                </a>
+                    <a class="text-light" href="WebsiteList.html">
+                        <i class="fas fa-plus"></i>
+                    </a>
             </div>
         </div>
         <!-- Right Navbar -->
         <div class="col-lg-9 navbar">
-            <span class="navbar-brand mb-0 h1 ml-4">New Websites</span>
+            <div>
+                <a class="text-light d-lg-none " href="WebsiteList.html">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <span class="navbar-brand mb-0 h1 ml-4">New Website</span>
+            </div>
             <a class="text-light" href="WebsiteList.html">
                 <i class="fas fa-check"></i>
             </a>
         </div>
     </nav>
     <!-- left body -->
-    <aside class="row">
-        <div class="col-lg-3 d-none d-lg-block">
+    <main class="row">
+        <aside class="col-lg-3 d-none d-lg-block">
             <div class="container">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <a href="../page/PageList.html">Blogging App
                         </a>
-                        <a class="float-right" href="WebsiteEdit.html"><i class="fas fa-cog"></i></a>
+                        <a class="float-right" href="WebsiteEdit.html">
+                            <i class="fas fa-cog"></i>
+                        </a>
                     </li>
                     <li class="list-group-item">
                         <a href="../page/PageList.html">Address Book App
                         </a>
-                        <a class="float-right" href="WebsiteEdit.html"><i class="fas fa-cog"></i></a>
+                        <a class="float-right" href="WebsiteEdit.html">
+                            <i class="fas fa-cog"></i>
+                        </a>
                     </li>
                     <li class="list-group-item">
                         <a href="../page/PageList.html">Script Testing App
                         </a>
-                        <a class="float-right" href="WebsiteEdit.html"><i class="fas fa-cog"></i></a>
+                        <a class="float-right" href="WebsiteEdit.html">
+                            <i class="fas fa-cog"></i>
+                        </a>
                     </li>
                     <li class="list-group-item">
-
                         <a href="../page/PageList.html">Blogger App
                         </a>
-                        <a class="float-right" href="WebsiteEdit.html"><i class="fas fa-cog"></i>
+                        <a class="float-right" href="WebsiteEdit.html">
+                            <i class="fas fa-cog"></i>
                         </a>
                     </li>
                 </ul>
             </div>
-        </div>
+        </aside>
         <!-- right body -->
-        <div class="col-lg-9">
+        <section class="col-lg-9">
             <div class="container-fluid">
                 <form>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" placeholder="Enter website name..." id="name" class="form-control" />
+                        <input 
+                            type="text" 
+                            placeholder="Enter website name..." id="name" 
+                            class="form-control" 
+                        />
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea class="form-control" placeholder="Enter website description..." rows="5"></textarea>
+                        <textarea 
+                            class="form-control" 
+                            placeholder="Enter website description..." rows="5">
+                        </textarea>
                     </div>
                 </form>
             </div>
-        </div>
-    </aside>
+        </section>
+    </main>
     <!-- bottom navbar -->
     <footer class="navbar navbar-dark bg-primary fixed-bottom">
         <span></span>

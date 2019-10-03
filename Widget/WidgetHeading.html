@@ -1,4 +1,3 @@
-<!-- Looks Good 10/2/19, Went over with Shiyu -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,23 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <!-- my style -->
+    <link 
+        rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous" 
+    />
+<!-- my style -->
     <link rel="stylesheet" href="../styles.css" />
-    <!-- kit code from font awesome -->
-    <script src="https://kit.fontawesome.com/e4492dae8c.js" crossorigin="anonymous"></script>
-
+<!-- kit code from font awesome -->
+    <script 
+    src="https://kit.fontawesome.com/e4492dae8c.js" 
+    crossorigin="anonymous">
+    </script>
     <title>Widget Heading</title>
 </head>
-
 <body>
     <nav class="navbar navbar-light bg-light fixed-top">
         <div>
             <a href=WidgetList.html class="text-dark">
                 <i class="fas fa-chevron-left"></i>
             </a>
-            <span class="navbar-brand h1 mb-0 ml-4 text-secondary">Widget Edit</span>
+            <span class="navbar-brand h1 mb-0 ml-4 text-secondary">Widget Edit
+            </span>
         </div>
         <a class="text-dark" href="WidgetList.html">
             <i class="fas fa-check"></i>
@@ -34,16 +39,32 @@
             <!-- 'label for' and 'id' have to match -->
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" placeholder="Enter Widget Name..." id="name" />
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Enter Widget Name..." 
+                    id="name" 
+                />
             </div>
             <div class="form-group">
                 <label for="text">Text</label>
-                <input type="text" class="form-control" placeholder="Enter Widget Text..." id="text" />
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Enter Widget Text..." 
+                    id="text" 
+                />
             </div>
             <!-- both type could be text or range, but range is a better practice. Letting the customer enter number only -->
             <div class="form-group">
                 <label for="size">Size</label>
-                <input type="range" min="1" max="6" class="form-control" placeholder="3" id="size" />
+                <input 
+                    type="range" 
+                    min="1" 
+                    max="6" 
+                    class="form-control"  
+                    id="size" 
+                />
             </div>
             <button class="btn btn-danger btn-block">Delete</button>
         </form>
@@ -56,5 +77,4 @@
         </a>
     </footer>
 </body>
-
 </html>
