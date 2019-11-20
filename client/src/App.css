@@ -1,0 +1,22 @@
+/* 10/1/2019- Make sure this style is outside of the folders. Because it will be hard to make style changes in the future if it's NOT */
+body {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+label {
+  font-weight: bold;
+  /* for the underlines on the links */
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* We created this for the WidgetList page to move the icons to the left of the page. Only works when the position is absolute*/
+.absolute-right {
+  right: 0;
+}
+
+.front {
+  z-index: 10;
+}
