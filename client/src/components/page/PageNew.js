@@ -18,7 +18,7 @@ export default function PageNew() {
           <i className="fas fa-check" />
         </Link>
       </nav>
-      {/* body */}
+
       <main className="container">
         <form>
           <div className="form-group">
