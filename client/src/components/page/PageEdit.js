@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 
 export default function PageEdit() {
   return (
@@ -6,16 +7,16 @@ export default function PageEdit() {
       {/* navbar */}
       <nav className="navbar navbar-light bg-light fixed-top">
         <div>
-          <a href="PageList.html" className="text-dark">
+          <Link to="/user/:uid/website/:wid/page" className="text-dark">
             <i className="fas fa-chevron-left" />
-          </a>
+          </Link>
           <span className="navbar-brand h1 ml-4 mb-0 text-secondary">
             Edit Page
           </span>
         </div>
-        <a className="text-dark" href="PageList.html">
+        <Link className="text-dark" to="/user/:uid/website/:wid/page">
           <i className="fas fa-check" />
-        </a>
+        </Link>
       </nav>
       {/* body */}
       <main className="container">
@@ -39,18 +40,20 @@ export default function PageEdit() {
               id="title"
             />
           </div>
-          <a href="PageList.html" className="btn btn-danger btn-block">
+          <Link to="/user/:uid/website/:wid/page" className="btn btn-danger btn-block">
             Delete
-          </a>
+          </Link>
         </form>
       </main>
       {/* bottom navbar */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <a href="../user/Profile.html" className="text-dark">
+        <Link to="/user/:uid" className="text-dark">
           <i className="fas fa-user" />
-        </a>
+        </Link>
       </footer>
     </div>
   );
 }
+
+

@@ -1,33 +1,34 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
-    <div classname="container">
+    <div className="container">
       <h1>Login</h1>
       <form>
-        <div classname="form-group">
+        <div className="form-group">
           <input
             type="text"
-            classname="form-control"
+            className="form-control"
             id="username"
             aria-describedby="usernameHelp"
             placeholder="Username"
           />
         </div>
-        <div classname="form-group">
+        <div className="form-group">
           <input
             type="password"
-            classname="form-control"
+            className="form-control"
             id="password"
             placeholder="Password"
           />
         </div>
-        <a classname="btn btn-primary btn-block" href="Profile.html">
+        <Link className="btn btn-primary btn-block" to="/user/:uid">
           Login
-        </a>
-        <a classname="btn btn-success btn-block" href="Register.html">
+        </Link>
+        <Link className="btn btn-success btn-block" to="/register">
           Register
-        </a>
+        </Link>
       </form>
     </div>
   );

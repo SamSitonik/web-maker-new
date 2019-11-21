@@ -1,41 +1,42 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   return (
-    <div classname="container">
+    <div className="container">
       <h1>Register</h1>
       <form>
-        <div classname="form-group">
+        <div className="form-group">
           <input
             type="text"
-            classname="form-control"
+            className="form-control"
             id="username"
             aria-describedby="usernameHelp"
             placeholder="Username"
           />
         </div>
-        <div classname="form-group">
+        <div className="form-group">
           <input
             type="password"
-            classname="form-control"
+            className="form-control"
             id="password"
             placeholder="Password"
           />
         </div>
-        <div classname="form-group">
+        <div className="form-group">
           <input
             type="password"
-            classname="form-control"
+            className="form-control"
             id="verify password"
             placeholder="Verify Password"
           />
         </div>
-        <a classname="btn btn-primary btn-block" href="Profile.html">
-          Register
-        </a>
-        <a classname="btn btn-danger btn-block" href="Login.html">
-          Cancel
-        </a>
+        <Link className="btn btn-primary btn-block" to="/user/:uid">
+        Register
+        </Link>
+        <Link className="btn btn-danger btn-block" to="/login">
+        Cancel
+        </Link>
       </form>
     </div>
   );

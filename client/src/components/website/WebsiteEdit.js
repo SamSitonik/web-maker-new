@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function WebsiteEdit() {
   return (
@@ -8,27 +9,27 @@ export default function WebsiteEdit() {
         <div className="col-lg-3 d-none d-lg-block">
           <div className="navbar">
             <div>
-              <a className="text-light" href="WebsiteList.html">
+              <Link className="text-light" to="/user/:uid/website">
                 <i className="fas fa-chevron-left" />
-              </a>
+              </Link>
               <span className="navbar-brand h1 mb-0 ml-4">Websites</span>
             </div>
-            <a className="text-light" href="WebsiteNew.html">
+            <Link className="text-light" to="/user/:uid/website/new">
               <i className="fas fa-plus" />
-            </a>
+            </Link>
           </div>
         </div>
         {/* Right Navbar */}
         <div className="col-lg-9 navbar">
           <div>
-            <a className="text-light d-lg-none" href="WebsiteList.html">
+            <Link className="text-light d-lg-none" to="/user/:uid/website">
               <i className="fas fa-chevron-left" />
-            </a>
+            </Link>
             <span className="navbar-brand mb-0 h1 ml-4">Edit Website</span>
           </div>
-          <a className="text-light" href="WebsiteList.html">
+          <Link className="text-light" to="/user/:uid/website">
             <i className="fas fa-check" />
-          </a>
+          </Link>
         </div>
       </nav>
       {/* left body */}
@@ -37,28 +38,28 @@ export default function WebsiteEdit() {
           <div className="container">
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
-                <a href="../page/PageList.html">Blogging App</a>
-                <a className="float-right" href="WebsiteEdit.html">
+                <Link to="/user/:uid/website/:wid/page">Blogging App</Link>
+                <Link className="float-right" to="/user/:uid/website/:wid">
                   <i className="fas fa-cog" />
-                </a>
+                </Link>
               </li>
               <li className="list-group-item">
-                <a href="../page/PageList.html">Address Book App</a>
-                <a className="float-right" href="WebsiteEdit.html">
+                <Link to="/user/:uid/website/:wid/page">Address Book App</Link>
+                <Link className="float-right" to="/user/:uid/website/:wid">
                   <i className="fas fa-cog" />
-                </a>
+                </Link>
               </li>
               <li className="list-group-item">
-                <a href="../page/PageList.html">Script Testing App</a>
-                <a className="float-right" href="WebsiteEdit.html">
+                <Link to="/user/:uid/website/:wid/page">Script Testing App</Link>
+                <Link className="float-right" to="/user/:uid/website/:wid">
                   <i className="fas fa-cog" />
-                </a>
+                </Link>
               </li>
               <li className="list-group-item">
-                <a href="../page/PageList.html">Blogger App</a>
-                <a className="float-right" href="WebsiteEdit.html">
+                <Link to="/user/:uid/website/:wid/page">Blogger App</Link>
+                <Link className="float-right" to="/user/:uid/website/:wid">
                   <i className="fas fa-cog" />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -88,9 +89,9 @@ export default function WebsiteEdit() {
                   }
                 />
               </div>
-              <a className="btn btn-danger btn-block" href="WebsiteList.html">
+              <Link className="btn btn-danger btn-block" to="WebsiteList.html">
                 Delete
-              </a>
+              </Link>
             </form>
           </div>
         </div>
@@ -98,9 +99,9 @@ export default function WebsiteEdit() {
       {/* bottom navbar */}
       <footer className="navbar navbar-dark bg-primary fixed-bottom">
         <span />
-        <a className="text-light" href="../user/profile.html">
+        <Link className="text-light" to="/user/:uid">
           <i className="fas fa-user" />
-        </a>
+        </Link>
       </footer>
     </div>
   );

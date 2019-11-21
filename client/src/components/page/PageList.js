@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 
 export default function PageList() {
   return (
@@ -7,59 +8,59 @@ export default function PageList() {
       <nav className="navbar bg-light navbar-light fixed-top">
         {/* first div contains the icon and word on the left */}
         <div>
-          <a href="../website/WebsiteList.html" className="text-dark">
+          <Link to="/user/:uid/website" className="text-dark">
             <i className="fas fa-chevron-left" />
-          </a>
+          </Link>
           <span className="navbar-brand mb-0 h1 ml-4 text-secondary">
             Pages
           </span>
         </div>
         {/* items on the right of the navbar*/}
-        <a href="PageNew.html" className="text-dark">
+        <Link to="/user/:uid/website/:wid/page/new" className="text-dark">
           <i className="fas fa-plus" />
-        </a>
+        </Link>
       </nav>
       {/* "You can use a div here, but the better idea is to use 'main'"-Shiyu */}
       <main className="container">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <a href="../widget/WidgetList.html">Blog Post</a>
-            <a href="PageEdit.html" className="float-right">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget">Blog Post</Link>
+            <Link to="/user/:uid/website/:wid/page/:pid" className="float-right">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
           </li>
           <li className="list-group-item">
-            <a href="../widget/WidgetList.html">Blogs</a>
-            <a href="PageEdit.html" className="float-right">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget">Blogs</Link>
+            <Link to="/user/:uid/website/:wid/page/:pid" className="float-right">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
           </li>
           <li className="list-group-item">
-            <a href="../widget/WidgetList.html">Home</a>
-            <a href="PageEdit.html" className="float-right">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget">Home</Link>
+            <Link to="/user/:uid/website/:wid/page/:pid" className="float-right">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
           </li>
           <li className="list-group-item">
-            <a href="../widget/WidgetList.html">About</a>
-            <a href="PageEdit.html" className="float-right">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget">About</Link>
+            <Link to="/user/:uid/website/:wid/page/:pid" className="float-right">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
           </li>
           <li className="list-group-item">
-            <a href="../widget/WidgetList.html">Contact Us</a>
-            <a href="PageEdit.html" className="float-right">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget">Contact Us</Link>
+            <Link to="/user/:uid/website/:wid/page/:pid" className="float-right">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
           </li>
         </ul>
       </main>
       {/* footer */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <a className="text-dark" href="../user/Profile.html">
+        <Link className="text-dark" to="/user/:uid">
           <i className="fas fa-user" />
-        </a>
+        </Link>
       </footer>
     </div>
   );

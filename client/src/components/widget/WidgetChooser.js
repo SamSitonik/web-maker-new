@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 
 export default function WidgetChooser() {
   return (
@@ -6,9 +7,9 @@ export default function WidgetChooser() {
       {/* navbar */}
       <nav className="navbar bg-light navbar-light fixed-top">
         <div>
-          <a href="WidgetList.html" className="text-dark">
+          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="text-dark">
             <i className="fas fa-chevron-left" />
-          </a>
+          </Link>
           <span className="navbar-brand h1 mb-0 ml-4">Choose Widget</span>
         </div>
       </nav>
@@ -16,34 +17,34 @@ export default function WidgetChooser() {
       <main className="container">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <a href="WidgetHeading.html">Header</a>
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">Header</Link>
           </li>
           <li className="list-group-item">
-            <a href="#">Label</a>
+            <Link to="!#">Label</Link>
           </li>
           <li className="list-group-item">
-            <a href="#">HTML</a>
+            <Link to="!#">HTML</Link>
           </li>
           <li className="list-group-item">
-            <a href="#">Text Input</a>
+            <Link to="!#">Text Input</Link>
           </li>
           <li className="list-group-item">
-            <a href="#">Link</a>
+            <Link to="!#">Link</Link>
           </li>
           <li className="list-group-item">
-            <a href="#">Button</a>
+            <Link to="!#">Button</Link>
           </li>
           <li className="list-group-item">
-            <a href="WidgetImage.html">Image</a>
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">Image</Link>
           </li>
           <li className="list-group-item">
-            <a href="WidgetYouTube.html">YouTube</a>
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">YouTube</Link>
           </li>
           <li className="list-group-item">
-            <a href="#">Data Table</a>
+            <Link to="!#">Data Table</Link>
           </li>
           <li className="list-group-item">
-            <a href="#">Repeater</a>
+            <Link to="!#">Repeater</Link>
           </li>
         </ul>
       </main>
@@ -51,9 +52,9 @@ export default function WidgetChooser() {
       <footer className="navbar navbar-light bg-light fixed-bottom">
         {/* "Even though the span is empty, we leave it here to move the user icon to the right side" */}
         <span />
-        <a className="text-dark" href="../user/Profile.html">
+        <Link className="text-dark" to="/user/:uid">
           <i className="fas fa-user" />
-        </a>
+        </Link>
       </footer>
     </div>
   );

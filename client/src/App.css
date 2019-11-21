@@ -1,4 +1,3 @@
-/* 10/1/2019- Make sure this style is outside of the folders. Because it will be hard to make style changes in the future if it's NOT */
 body {
   padding-top: 75px;
   padding-bottom: 75px;
@@ -14,9 +13,17 @@ a:hover {
 
 /* We created this for the WidgetList page to move the icons to the left of the page. Only works when the position is absolute*/
 .absolute-right {
-  right: 0;
+  right: 15px;
 }
 
 .front {
   z-index: 10;
+}
+
+.click {
+  cursor: pointer;
+}
+
+.click i:hover {
+  color: #777777 !important;
 }

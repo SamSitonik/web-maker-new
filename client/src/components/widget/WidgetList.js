@@ -1,30 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 
-export default function Login() {
+export default function WidgetList() {
   return (
     <div>
       {/* Navbar */}
       <nav className="navbar bg-light navbar-light fixed-top">
         <div>
-          <a href="../page/PageList.html" className="text-dark">
+          <Link to="/user/:uid/website/:wid/page" className="text-dark">
             <i className="fas fa-chevron-left" />
-          </a>
+          </Link>
           <span className="navbar-brand h1 mb-0 ml-4 text-secondary">
             Widgets
           </span>
         </div>
-        <a className="text-dark" href="WidgetChooser.html">
+        <Link className="text-dark" to="/user/:uid/website/:wid/page/:pid/widget/new">
           <i className="fas fa-plus" />
-        </a>
+        </Link>
       </nav>
       {/* Large Heading*/}
       <main className="container-fluid">
         <section>
           {/* div to create the ICONS 1st, both icons. float-right won't work right here, so we had to use "absolute-right" */}
           <div className="position-absolute absolute-right p-1 bg-light rounded-left">
-            <a href="WidgetHeading.html">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
             <i className="fas fa-bars" />
           </div>
           <h1>GIZMODO</h1>
@@ -32,9 +33,9 @@ export default function Login() {
         {/* Smaller Heading*/}
         <section>
           <div className="position-absolute absolute-right p-1 bg-light rounded-left">
-            <a href="WidgetHeading.html">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
             <i className="fas fa-bars" />
           </div>
           <h3>Best names for my Blonde Golden Retriever Puppy :)</h3>
@@ -42,14 +43,15 @@ export default function Login() {
         {/*IMAGE*/}
         <section>
           <div className="position-absolute absolute-right p-1 bg-light rounded-left">
-            <a href="WidgetImage.html">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
             <i className="fas fa-bars" />
           </div>
           {/* 1)Any picture on web, right click and "copy image address" 2)Added with because it was JUMBO size, we made it 100% */}
           <img
             src="https://i.etsystatic.com/6348803/r/il/747fef/423833021/il_794xN.423833021_7rjo.jpg"
+            title="video"
             alt="dogs"
             width="100%"
           />
@@ -57,9 +59,9 @@ export default function Login() {
         {/*Paragraph with LINK inside */}
         <section>
           <div className="position-absolute absolute-right p-1 bg-light rounded-left">
-            <a href="WidgetHeading.html">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
             <i className="fas fa-bars" />
           </div>
           {/* "Lorem10" was used to get the dummy text */}
@@ -78,9 +80,9 @@ export default function Login() {
         {/* Heading for the video*/}
         <section>
           <div className="position-absolute absolute-right p-1 bg-light rounded-left front">
-            <a href="WidgetHeading.html">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
             <i className="fas fa-bars" />
           </div>
           <h3>Funny &amp; Cute Video! </h3>
@@ -88,9 +90,9 @@ export default function Login() {
         {/* YouTube video*/}
         <section>
           <div className="position-absolute absolute-right p-1 bg-light rounded-left">
-            <a href="WidgetYouTube.html">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
             <i className="fas fa-bars" />
           </div>
           {/*1) We got the embed code from Bootstrap to make it responsive(when screen size changes=video size changes) We searched for "embed" or "Iframe", 2) then we went to YouTube, right click and "copy embed code" 3) Most videos are 16by9, but it can be other aspect ratios i.e. 1by1, 21by9, 4by3, 16by9 */}
@@ -106,9 +108,9 @@ export default function Login() {
         {/* Last Paragraph*/}
         <section>
           <div className="position-absolute absolute-right p-1 bg-light rounded-left">
-            <a href="WidgetHeading.html">
+            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">
               <i className="fas fa-cog" />
-            </a>
+            </Link>
             <i className="fas fa-bars" />
           </div>
           <p>
@@ -126,9 +128,9 @@ export default function Login() {
           <i className="fas fa-play" />
           <i className="far fa-eye ml-2" />
         </div>
-        <a className="text-dark" href="../user/Profile.html">
+        <Link className="text-dark" to="/user/:uid">
           <i className="fas fa-user" />
-        </a>
+        </Link>
       </footer>
     </div>
   );

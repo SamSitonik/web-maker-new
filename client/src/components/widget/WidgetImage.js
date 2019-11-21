@@ -1,20 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 
-export default function Login() {
+export default function WidgetImage() {
   return (
     <div>
       <nav className="navbar navbar-light bg-light fixed-top">
         <div>
-          <a href="WidgetList.html" className="text-dark">
+          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="text-dark">
             <i className="fas fa-chevron-left" />
-          </a>
+          </Link>
           <span className="navbar-brand h1 mb-0 ml-4 text-secondary">
             Widget Edit
           </span>
         </div>
-        <a className="text-dark" href="WidgetList.html">
+        <Link className="text-dark" to="/user/:uid/website/:wid/page/:pid/widget">
           <i className="fas fa-check" />
-        </a>
+        </Link>
       </nav>
       {/* body */}
       <main className="container">
@@ -64,19 +65,19 @@ export default function Login() {
             <label htmlFor="upload">Upload</label>
             <input type="file" className="form-control" id="upload" />
           </div>
-          {/* before I had "a href" but we put button on the last 3 pages for now, I think because the upload isn't going anywhere for now, (it's a dummy button) */}
+          {/* before I had "a href then to "to"" but we put button on the last 3 pages for now, I think because the upload isn't going anywhere for now, (it's a dummy button) */}
           <button className="btn btn-primary btn-block">Upload Image</button>
-          <a href="WidgetList.html" className="btn btn-danger btn-block">
+          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="btn btn-danger btn-block">
             Delete
-          </a>
+          </Link>
         </form>
       </main>
       {/* bottom navbar */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <a className="text-dark" href="../user/Profile.html">
+        <Link className="text-dark" to="/user/:uid">
           <i className="fas fa-user" />
-        </a>
+        </Link>
       </footer>
     </div>
   );
