@@ -51,7 +51,6 @@ export default function WidgetList() {
           {/* 1)Any picture on web, right click and "copy image address" 2)Added with because it was JUMBO size, we made it 100% */}
           <img
             src="https://i.etsystatic.com/6348803/r/il/747fef/423833021/il_794xN.423833021_7rjo.jpg"
-            title="video"
             alt="dogs"
             width="100%"
           />
@@ -99,6 +98,7 @@ export default function WidgetList() {
           <div className="embed-responsive embed-responsive-16by9">
             <iframe
               src="https://www.youtube.com/embed/8sUOvDzmrks"
+              title="video"
               frameBorder={0}
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
