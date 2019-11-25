@@ -1,33 +1,54 @@
+// DONE
+
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom"; 
+import { Link, useParams } from "react-router-dom";
 
 export default function Profile(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
 
   const params = useParams();
 
- useEffect(() => {
-  for(let user of props.users) {
-    if(user._id === params.uid) {
-      setUsername(user.username);
-      setEmail(user.email);
-      setFirstName(user.firstName);
-      setLastName(user.lastName);
-      return;
+  useEffect(() => {
+    for (let user of props.users) {
+      if (user._id === params.uid) {
+        setUsername(user.username);
+        setEmail(user.email);
+        setFirstName(user.firstName);
+        setLastName(user.lastName);
+        setPassword(user.password);
+        return;
+      }
     }
-  }
- }, [params.uid, props.users]);
+  }, [params.uid, props.users]);
 
- 
+  const update = () => {
+    const newUser = {
+      _id: params.uid,
+      username: username,
+      password: password,
+      email: email,
+      firstName: firstName,
+      lastName: lastName
+    };
+
+    // Update user in users
+    props.updateUser(newUser);
+
+    alert("User info updated");
+  };
+
   return (
     <div>
       {/* navbar */}
       <nav className="navbar navbar-dark bg-primary fixed-top">
         <span className="navbar-brand h1 mb-0 ml-4">Profile</span>
-        <span className= "click text-light"><i className="fas fa-check"></i></span>
+        <span className="click" onClick={update}>
+          <i className="fas fa-check"></i>
+        </span>
       </nav>
       <main className="container">
         <form>
@@ -39,7 +60,7 @@ export default function Profile(props) {
               // id="username"
               placeholder="Enter username here..."
               value={username}
-              onChange={e=>{setUsername(e.target.value)}}
+              onChange={e => setUsername(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -50,7 +71,7 @@ export default function Profile(props) {
               // id="email"
               placeholder="Enter your email here..."
               value={email}
-              onChange={e=>{setEmail(e.target.value)}}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -61,7 +82,7 @@ export default function Profile(props) {
               // id="firstName"
               placeholder="Enter your first name..."
               value={firstName}
-              onChange={e=>{setFirstName(e.target.value)}}
+              onChange={e => setFirstName(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -72,13 +93,18 @@ export default function Profile(props) {
               // id="lastName"
               placeholder="Enter your last name..."
               value={lastName}
-              onChange={e=>{setLastName(e.target.value)}}
+              onChange={e => setLastName(e.target.value)}
             />
           </div>
         </form>
-        <button className="btn btn-primary btn-block">Websites</button>
+        <Link
+          to={`/user/${params.uid}/website`}
+          className="btn btn-primary btn-block"
+        >
+          Websites
+        </Link>
         <Link className="btn btn-danger btn-block" to="/login">
-        Logout
+          Logout
         </Link>
       </main>
       {/* bottom navbar */}

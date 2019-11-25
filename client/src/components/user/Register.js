@@ -1,3 +1,4 @@
+// DONE
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import uuid from "uuid";
@@ -14,7 +15,7 @@ export default function Register(props) {
     e.preventDefault(); 
     // Check if passwords match 
     if(password !== password2) {
-      alert("The passwords you entered do not match, please try again")
+      alert("The passwords you entered do not match, please try again");
       return;
     }
     // Check if username is already taken
@@ -76,9 +77,12 @@ export default function Register(props) {
             onChange={e=> setPassword2(e.target.value)}
           />
         </div>
-        <button className="btn btn-primary btn-block">Register</button>
-        <Link className="btn btn-danger btn-block" to="/login">
-        Cancel
+        <button className="btn btn-primary btn-block">
+          Register
+        </button>
+        <Link className="btn btn-danger btn-block" 
+        to="/login">
+          Cancel
         </Link>
       </form>
     </div>

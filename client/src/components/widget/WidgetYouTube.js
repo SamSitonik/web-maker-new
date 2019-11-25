@@ -1,32 +1,43 @@
+// done.review
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link, useParams } from "react-router-dom"; 
 
-export default function WidgetYouTube() {
+export default function WidgetYouTube(props) {
+  const params = useParams();
+
   return (
     <div>
       {/* navbar */}
       <nav className="navbar navbar-light bg-light fixed-top">
         <div>
-          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="text-dark">
+          <Link 
+          to={`/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget`}
+          className="text-dark">
             <i className="fas fa-chevron-left" />
           </Link>
           <span className="navbar-brand h1 ml-4 mb-0 text-secondary">
             Widget Edit
           </span>
         </div>
-        <Link className="text-dark" to="/user/:uid/website/:wid/page/:pid/widget">
+        <button
+        className="text-dark btn" 
+        form="widgetForm">
           <i className="fas fa-check" />
-        </Link>
+        </button>
       </nav>
+
       <main className="container">
-        <form>
+        <form id="widgetForm" onSubmit={props.update}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
               type="text"
-              id="name"
+              // id="name"
               className="form-control"
               placeholder="Enter Widget Name..."
+              name="name"
+              value={props.widget.name?props.widget.name: ""}
+              onChange={props.onChange}
             />
           </div>
           <div className="form-group">
@@ -35,7 +46,10 @@ export default function WidgetYouTube() {
               type="text"
               className="form-control"
               placeholder="Enter Widget Text..."
-              id="text"
+              // id="text"
+              name="text"
+              value={props.widget.text?props.widget.text: ""}
+              onChange={props.onChange}
             />
           </div>
           <div className="form-group">
@@ -44,7 +58,10 @@ export default function WidgetYouTube() {
               type="text"
               className="form-control"
               placeholder="Enter YouTube Address..."
-              id="url"
+              // id="url"
+              name="url"
+              value={props.widget.url?props.widget.url: ""}
+              onChange={props.onChange}
             />
           </div>
           <div className="form-group">
@@ -54,18 +71,26 @@ export default function WidgetYouTube() {
               min={1}
               max={100}
               className="form-control"
-              id="width"
+              // id="width"
+              name="width"
+              value={props.widget.width?props.widget.width: "100%"}
+              onChange={props.onChange}
             />
           </div>
-          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="btn btn-danger btn-block">
+          <button 
+          onClick={props.remove} 
+          type="button"
+          className="btn btn-danger btn-block">
             Delete
-          </Link>
+          </button>
         </form>
       </main>
       {/* bottom navbar */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <Link className="text-dark" to="/user/:uid">
+        <Link 
+        className="text-dark" 
+        to={`/user/${params.uid}`}>
           <i className="fas fa-user" />
         </Link>
       </footer>

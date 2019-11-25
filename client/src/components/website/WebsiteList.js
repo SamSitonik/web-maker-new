@@ -1,31 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
+// Done. 
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-export default function WebsiteList() {
+export default function WebsiteList(props) {
+const params = useParams();
+
+const [websites, setWebsites] = useState([]);
+
+useEffect(() => {
+  setWebsites(props.getWebsites(params.uid));
+}, [params.uid, props]);
+
   return (
     <div>
       {/* navbar */}
       <nav className="navbar navbar-dark bg-primary fixed-top">
         <div>
-          <Link className="text-light" to="/user/:uid">
+          <Link 
+          className="text-light" 
+          to={`/user/${params.uid}`}>
             <i className="fas fa-chevron-left" />
           </Link>
           <span className="navbar-brand h1 mb-0 ml-4">Websites</span>
         </div>
-        <Link className="text-light" to="/user/:uid/website/new">
+        <Link className="text-light" 
+        to={`/user/${params.uid}/website/new`}>
           <i className="fas fa-plus" />
         </Link>
       </nav>
       {/* body */}
       <main className="container">
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <Link to="/user/:uid/website/:wid/page">Address Book App</Link>
-            <Link className="float-right" to="/user/:uid/website/:wid">
-              <i className="fas fa-cog" />
-            </Link>
-          </li>
-          <li className="list-group-item">
+          {websites.map(website => (
+            <li key={website._id} className="list-group-item">
+              <Link to={`/user/${website.developerId}/website/${website._id}/page`}>
+              {website.name}
+              </Link>
+              <Link className="float-right"
+                to={`/user/${website.developerId}/website/${website._id}`}
+                ><i className="fas fa-cog"/>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </main>
+       {/*
+        className="list-group-item">
             <Link to="/user/:uid/website/:wid/page">Blogger</Link>
             <Link className="float-right" to="/user/:uid/website/:wid">
               <i className="fas fa-cog" />
@@ -41,14 +61,12 @@ export default function WebsiteList() {
             <Link to="/user/:uid/website/:wid/page">Script Testing App</Link>
             <Link className="float-right" to="/user/:uid/website/:wid">
               <i className="fas fa-cog" />
-            </Link>
-          </li>
-        </ul>
-      </main>
+            </Link> */}
+          
       {/* bottom navbar */}
       <footer className="navbar navbar-dark bg-primary fixed-bottom">
         <span />
-        <Link className="text-light" to="/user/:uid">
+        <Link className="text-light" to={`/user/${params.uid}`}>
           <i className="fas fa-user" />
         </Link>
       </footer>

@@ -1,32 +1,43 @@
+// Review.Done
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link, useParams } from "react-router-dom"; 
 
-export default function WidgetImage() {
+export default function WidgetImage(props) {
+  const params = useParams();
+
   return (
     <div>
       <nav className="navbar navbar-light bg-light fixed-top">
         <div>
-          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="text-dark">
+          <Link 
+          to={`/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget`}
+          className="text-dark">
             <i className="fas fa-chevron-left" />
           </Link>
           <span className="navbar-brand h1 mb-0 ml-4 text-secondary">
             Widget Edit
           </span>
         </div>
-        <Link className="text-dark" to="/user/:uid/website/:wid/page/:pid/widget">
+        <button 
+        className="text-dark btn" 
+        form="wodgetForm">
           <i className="fas fa-check" />
-        </Link>
+        </button>
       </nav>
+
       {/* body */}
       <main className="container">
-        <form>
+        <form id="widgetForm" onSubmit={props.update}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
               type="text"
-              id="name"
+              // id="name"
               className="form-control"
               placeholder="Enter Widget Name..."
+              name="name"
+              value={props.widget.name? props.widget.name : ""}
+              onChange={props.onChange}
             />
           </div>
           <div className="form-group">
@@ -35,7 +46,10 @@ export default function WidgetImage() {
               type="text"
               className="form-control"
               placeholder="Enter Widget Text..."
-              id="text"
+              // id="text"
+              name="text"
+              value={props.widget.text? props.widget.text : ""}
+              onChange={props.onChange}
             />
           </div>
           {/* Question: Does the 'label for' and the 'id' have to be lowercase or uppercase, Answer: lowercase */}
@@ -45,7 +59,10 @@ export default function WidgetImage() {
               type="text"
               className="form-control"
               placeholder="Enter Image Address..."
-              id="url"
+              // id="url"
+              name="url"
+              value={props.widget.url? props.widget.url : ""}
+              onChange={props.onChange}
             />
           </div>
           {/* I didn't know what 'type' and it turns out that we decided to use range. With range there must be a min/max */}
@@ -57,7 +74,10 @@ export default function WidgetImage() {
               max={100}
               className="form-control"
               placeholder="100%"
-              id="width"
+              // id="width"
+              name="width"
+              value={props.widget.width? props.widget.width : "100"}
+              onChange={props.onChange}
             />
           </div>
           {/* Right here, I didn't know where to find the 'Upload' button. The type I also didn't know, and it turned out to be file. We didn't need the placeholder here, redundant perhaps??? */}
@@ -66,16 +86,23 @@ export default function WidgetImage() {
             <input type="file" className="form-control" id="upload" />
           </div>
           {/* before I had "a href then to "to"" but we put button on the last 3 pages for now, I think because the upload isn't going anywhere for now, (it's a dummy button) */}
-          <button className="btn btn-primary btn-block">Upload Image</button>
-          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="btn btn-danger btn-block">
+          <button 
+          type="button"
+          className="btn btn-primary btn-block">Upload Image</button>
+
+          <button 
+          onClick={props.remove} 
+          className="btn btn-danger btn-block">
             Delete
-          </Link>
+          </button>
         </form>
       </main>
       {/* bottom navbar */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <Link className="text-dark" to="/user/:uid">
+        <Link 
+        className="text-dark" 
+        to={`/user/${params.uid}`}>
           <i className="fas fa-user" />
         </Link>
       </footer>

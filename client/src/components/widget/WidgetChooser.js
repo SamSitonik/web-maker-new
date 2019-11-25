@@ -1,13 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom"; 
+// Done. 
 
-export default function WidgetChooser() {
+import React from "react";
+import { Link, useParams, useHistory } from "react-router-dom"; 
+import uuid from "uuid";
+
+export default function WidgetChooser(props) {
+  const params = useParams();
+  const history = useHistory();
+
+  const create = type => {
+    // Create new widget variable
+    const newWidget = {
+      _id: uuid.v4(),
+      widgetType: type,
+      pageId: params.pid
+    };
+    // Add new widget into widgets array
+    props.addWidget(newWidget);
+    // Navigate to widget edit page
+    history.push(
+      `/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget/${newWidget._id}`
+    );
+  };
+
   return (
     <div>
       {/* navbar */}
       <nav className="navbar bg-light navbar-light fixed-top">
         <div>
-          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="text-dark">
+          <Link 
+          to={`/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget`}
+          className="text-dark">
             <i className="fas fa-chevron-left" />
           </Link>
           <span className="navbar-brand h1 mb-0 ml-4">Choose Widget</span>
@@ -17,34 +40,39 @@ export default function WidgetChooser() {
       <main className="container">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">Header</Link>
+            <button onClick={create.bind(this, "HEADING")} className="btn">Header
+            </button>
           </li>
           <li className="list-group-item">
-            <Link to="!#">Label</Link>
+            <a href="!#">Label</a>
           </li>
           <li className="list-group-item">
-            <Link to="!#">HTML</Link>
+            <a href="!#">HTML</a>
           </li>
           <li className="list-group-item">
-            <Link to="!#">Text Input</Link>
+            <a href="!#">Text Input</a>
           </li>
           <li className="list-group-item">
-            <Link to="!#">Link</Link>
+            <a href ="!#">Link</a>
           </li>
           <li className="list-group-item">
-            <Link to="!#">Button</Link>
+            <a href="!#">Button</a>
           </li>
           <li className="list-group-item">
-            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">Image</Link>
+            <button className="btn" onClick={create.bind(this, "IMAGE")}>
+              Image
+            </button>
           </li>
           <li className="list-group-item">
-            <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid">YouTube</Link>
+            <button className="btn" onClick={create.bind(this, "YOUTUBE")}>
+              YouTube
+            </button>
           </li>
           <li className="list-group-item">
-            <Link to="!#">Data Table</Link>
+            <a href="!#">Data Table</a>
           </li>
           <li className="list-group-item">
-            <Link to="!#">Repeater</Link>
+            <a href="!#">Repeater</a>
           </li>
         </ul>
       </main>
@@ -52,7 +80,9 @@ export default function WidgetChooser() {
       <footer className="navbar navbar-light bg-light fixed-bottom">
         {/* "Even though the span is empty, we leave it here to move the user icon to the right side" */}
         <span />
-        <Link className="text-dark" to="/user/:uid">
+        <Link 
+        className="text-dark" 
+        to={`/user/${params.uid}`}>
           <i className="fas fa-user" />
         </Link>
       </footer>

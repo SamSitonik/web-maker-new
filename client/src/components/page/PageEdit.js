@@ -1,34 +1,68 @@
-import React from "react";
-import { Link } from "react-router-dom"; 
+// Done. 
+import React, { useState, useEffect} from "react";
+import { Link, useHistory, useParams } from "react-router-dom"; 
 
-export default function PageEdit() {
+export default function PageEdit(props) {
+  const history = useHistory();
+  const params = useParams();
+
+  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    const page = props.getPage(params.pid);
+    setName(page.name);
+    setTitle(page.title);
+  }, [props, params.pid]);
+
+  const remove = () => {
+    props.removePage(params.pid);
+    history.push(`/user/${params.uid}/website/${params.wid}/page`);
+  };
+
+  const update = e => {
+    e.preventDefault();
+    const newPage = {
+      _id: params.pid,
+      name:name, 
+      title: title, 
+      websiteId: params.wid
+    };
+    props.updatePage(newPage);
+    history.push(`/user/${params.uid}/website/${params.wid}/page`);
+  };
+
   return (
     <div>
       {/* navbar */}
       <nav className="navbar navbar-light bg-light fixed-top">
         <div>
-          <Link to="/user/:uid/website/:wid/page" className="text-dark">
+          <Link 
+          to={`/user/${params.uid}/website/${params.wid}/page`}
+          className="text-dark">
             <i className="fas fa-chevron-left" />
           </Link>
           <span className="navbar-brand h1 ml-4 mb-0 text-secondary">
             Edit Page
           </span>
         </div>
-        <Link className="text-dark" to="/user/:uid/website/:wid/page">
+        <button className="text-dark btn" form="pageForm">
           <i className="fas fa-check" />
-        </Link>
+        </button>
       </nav>
       {/* body */}
       <main className="container">
-        <form>
+        <form id="pageForm" onSubmit={update}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
               type="text"
-              id="name"
+              // id="name"
               className="form-control"
               placeholder="Enter page name..."
-              defaultValue="Blog Post"
+              // defaultValue="Blog Post"
+              value={name}
+              onChange={e => setName(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -37,18 +71,25 @@ export default function PageEdit() {
               type="text"
               className="form-control"
               placeholder="Enter page title..."
-              id="title"
+              // id="title"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
             />
           </div>
-          <Link to="/user/:uid/website/:wid/page" className="btn btn-danger btn-block">
+          <button 
+          type="button"
+          className="btn btn-danger btn-block">
+          onClick={remove}>
             Delete
-          </Link>
+          </button>
         </form>
       </main>
       {/* bottom navbar */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <Link to="/user/:uid" className="text-dark">
+        <Link 
+        to={`/user/${params.uid}`} 
+        className="text-dark">
           <i className="fas fa-user" />
         </Link>
       </footer>

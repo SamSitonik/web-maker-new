@@ -1,24 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom"; 
+// Review. Done
 
-export default function WidgetHeading() {
+import React from "react";
+import { Link, useParams } from "react-router-dom"; 
+
+export default function WidgetHeading(props) {
+  const params = useParams();
   return (
     <div>
       <nav className="navbar navbar-light bg-light fixed-top">
         <div>
-          <Link to="/user/:uid/website/:wid/page/:pid/widget" className="text-dark">
+          <Link 
+          to={`/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget`}
+          className="text-dark">
             <i className="fas fa-chevron-left" />
           </Link>
           <span className="navbar-brand h1 mb-0 ml-4 text-secondary">
             Widget Edit
           </span>
         </div>
-        <Link className="text-dark" to="/user/:uid/website/:wid/page/:pid/widget">
+        <button 
+        className="text-dark" 
+        form="widgetForm">
           <i className="fas fa-check" />
-        </Link>
+        </button>
+        
       </nav>
       <main className="container">
-        <form>
+        <form id="widgetForm" onSubmit={props.update}>
           {/* 'label for' and 'id' have to match */}
           <div className="form-group">
             <label htmlFor="name">Name</label>
@@ -26,7 +34,10 @@ export default function WidgetHeading() {
               type="text"
               className="form-control"
               placeholder="Enter Widget Name..."
-              id="name"
+              // id="name"
+              name="name"
+              value={props.widget.name ? props.widget.name : ""}
+              onChange= {props.onChange}
             />
           </div>
           <div className="form-group">
@@ -35,7 +46,10 @@ export default function WidgetHeading() {
               type="text"
               className="form-control"
               placeholder="Enter Widget Text..."
-              id="text"
+              // id="text"
+              name="text"
+              value={props.widget.text ? props.widget.text : ""}
+              onChange= {props.onChange}
             />
           </div>
           {/* both type could be text or range, but range is a better practice. Letting the customer enter number only */}
@@ -46,16 +60,24 @@ export default function WidgetHeading() {
               min={1}
               max={6}
               className="form-control"
-              id="size"
+              // id="size"
+              name="size"
+              value={props.widget.size ? props.widget.size : "1"}
+              onChange= {props.onChange}
             />
           </div>
-          <button className="btn btn-danger btn-block">Delete</button>
+          <button 
+          type="button"
+          onClick={props.remove}
+          className="btn btn-danger btn-block">Delete</button>
         </form>
       </main>
       {/* Shortcut ex)a.text-dark, then, hit tab button... */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <Link to="/user/:uid" className="text-dark">
+        <Link 
+        to={`/user/${params.uid}`} className="text-dark"
+        className="text-dark">
           <i className="fas fa-user" />
         </Link>
       </footer>
