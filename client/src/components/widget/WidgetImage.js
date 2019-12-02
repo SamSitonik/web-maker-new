@@ -20,7 +20,7 @@ export default function WidgetImage(props) {
         </div>
         <button 
         className="text-dark btn" 
-        form="wodgetForm">
+        form="widgetForm">
           <i className="fas fa-check" />
         </button>
       </nav>
@@ -85,7 +85,7 @@ export default function WidgetImage(props) {
             <label htmlFor="upload">Upload</label>
             <input type="file" className="form-control" id="upload" />
           </div>
-          {/* before I had "a href then to "to"" but we put button on the last 3 pages for now, I think because the upload isn't going anywhere for now, (it's a dummy button) */}
+          {/* before I had "a href then to "to but we put button on the last 3 pages for now, I think because the upload isn't going anywhere for now, (it's a dummy button) */}
           <button 
           type="button"
           className="btn btn-primary btn-block">Upload Image</button>

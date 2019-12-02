@@ -20,29 +20,17 @@ import WidgetChooser from "./components/widget/WidgetChooser";
 import WidgetEdit from "./components/widget/WidgetEdit";
 
 function App() {
-  //UserService Data,Shiyu-variable name is "users","setUsers" is a funtion to update the state
-  const [users, setUsers] = useState([
-    { _id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com" },
-    { _id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com" },
-    { _id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com" },
-    { _id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org" }
-  ]);
+
   // WebsiteService Data-Dummy Data from Shiyu
-  const [websites, setWebsites] = useState([
-    { _id: "123", name: "Facebook", developerId: "456", description: "Lorem" },
-    { _id: "234", name: "Tweeter", developerId: "456", description: "Lorem" },
-    { _id: "456", name: "Msimbo", developerId: "456", description: "Lorem" },
-    { _id: "890", name: "Go", developerId: "123", description: "Lorem" },
-    { _id: "567", name: "Tic Tac Toe", developerId: "123", description: "Lorem" },
-    { _id: "678", name: "Checkers", developerId: "123", description: "Lorem" },
-    { _id: "789", name: "Chess", developerId: "234", description: "Lorem" }
-  ]);
+  const [websites, setWebsites] = useState();
+
   // PageService Data
   const [pages, setPages] = useState([
     { _id: "321", name: "Post 1", websiteId: "456", title: "Lorem" },
     { _id: "432", name: "Post 2", websiteId: "456", title: "Lorem" },
     { _id: "543", name: "Post 3", websiteId: "456", title: "Lorem" }
   ]);
+
   // WidgetService Data
   const [widgets, setWidgets] = useState([
     { _id: "123", widgetType: "HEADING", pageId: "321", size: "2", text: "GIZMODO" },
@@ -51,66 +39,67 @@ function App() {
     { _id: "567", widgetType: "HEADING", pageId: "321", size: "4", text: "Lorem ipsum" },
     { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://www.youtube.com/embed/X1JjPS40a-E" }
   ]);
-  // Add a new user into users
-  const addUser = user => {
-    setUsers([...users, user]); // <--spread operator, incl. new user
-  };
 
-  // Update user by ID
-  const updateUser = newUser => {
-    setUsers(
-      users.map(user => {
-        if (user._id === newUser._id) {
-          return newUser;
-        } else {
-          return user;
-        }
-      })
-    );
-  };
+  // REMOVED to server side 12/2/19-- Add a new user into users
+  // const addUser = user => {
+  //   setUsers([...users, user]); // <--spread operator, incl. new user
+  // };
 
-  // Get websites by user ID
-const getWebsites = uid => {
-  const curWebs =[];
-  for (let website of websites) {
-    if (website.developerId === uid) {
-      curWebs.push(website);
-    }
-  }
-  return curWebs;
-};
+  // REMOVED to server side 12/2/19--Update user by ID
+  // const updateUser = newUser => {
+  //   setUsers(
+  //     users.map(user => {
+  //       if (user._id === newUser._id) {
+  //         return newUser;
+  //       } else {
+  //         return user;
+  //       }
+  //     })
+  //   );
+  // };
 
-// getWebsite
-const getWebsite = wid => {
-  for (let website of websites) {
-    if (website._id === wid) {
-      return website;
-    }
-  }
-};
+//   // Get websites by user ID
+// const getWebsites = uid => {
+//   const curWebs =[];
+//   for (let website of websites) {
+//     if (website.developerId === uid) {
+//       curWebs.push(website);
+//     }
+//   }
+//   return curWebs;
+// };
 
-// Add new website
-const addWebsite = newWeb => {
-  setWebsites([...websites, newWeb]);
-};
+// // getWebsite
+// const getWebsite = wid => {
+//   for (let website of websites) {
+//     if (website._id === wid) {
+//       return website;
+//     }
+//   }
+// };
 
-// Remove website
-const removeWebsite = wid => {
-  setWebsites(websites.filter(website => website._id !== wid));
-};
+// // Add new website
+// const addWebsite = newWeb => {
+//   setWebsites([...websites, newWeb]);
+// };
 
-// Update website
-const updateWebsite = newWeb => {
-  setWebsites(
-    websites.map(website => {
-      if (website._id === newWeb._id) {
-        return newWeb;
-      } else {
-        return website;
-      }
-    })
-  );
-};
+// // Remove website
+// const removeWebsite = wid => {
+//   setWebsites(websites.filter(website => website._id !== wid));
+// };
+
+// // Update website
+// const updateWebsite = newWeb => {
+//   setWebsites(
+//     websites.map(website => {
+//       if (website._id === newWeb._id) {
+//         return newWeb;
+//       } else {
+//         return website;
+//       }
+//     })
+//   );
+// };
 
 // Get pages by website ID
 const getPages = wid => {
@@ -191,13 +180,13 @@ const updateWidget = newWidget => {
       <Switch>
         {/* UserService */}
         <Route exact path="/login">
-          <Login users={users} />
+          <Login />
         </Route>
         <Route exact path="/register">
-          <Register users={users} addUser={addUser} />
+          <Register />
         </Route>
         <Route exact path="/user/:uid">
-          <Profile users={users} updateUser={updateUser} />
+          <Profile />
         </Route>
         {/* WebsiteService */}
         <Route exact path="/user/:uid/website">
@@ -244,7 +233,7 @@ const updateWidget = newWidget => {
         </Route>
         {/* Login Page */}
         <Route path="/">
-          <Login users={users} />
+          <Login />
         </Route>
       </Switch>
     </Router>

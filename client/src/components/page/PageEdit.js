@@ -77,10 +77,10 @@ export default function PageEdit(props) {
             />
           </div>
           <button 
-          type="button"
-          className="btn btn-danger btn-block">
-          onClick={remove}>
-            Delete
+            type="button"
+            className="btn btn-danger btn-block">
+            onClick={remove}>
+              Delete
           </button>
         </form>
       </main>

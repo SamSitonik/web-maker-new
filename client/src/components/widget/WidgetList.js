@@ -18,9 +18,9 @@ export default function WidgetList(props) {
       <nav className="navbar bg-light navbar-light fixed-top">
         <div>
           <Link 
-          to={`/user/${params.uid}/website/${params.wid}/page`}
-          className="text-dark">
-            <i className="fas fa-chevron-left" />
+            to={`/user/${params.uid}/website/${params.wid}/page`}
+            className="text-dark">
+              <i className="fas fa-chevron-left" />
           </Link>
           <span className="navbar-brand h1 mb-0 ml-4 text-secondary">
             Widgets
@@ -28,9 +28,9 @@ export default function WidgetList(props) {
         </div>
 
         <Link 
-        className="text-dark" 
-        to={`/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget/new`}>
-          <i className="fas fa-plus" />
+          className="text-dark" 
+          to={`/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget/new`}>
+            <i className="fas fa-plus" />
         </Link>
       </nav>
 

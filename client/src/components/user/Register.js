@@ -2,16 +2,16 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import uuid from "uuid";
+import axios from "axios";
 
 export default function Register(props) {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
 
   const history = useHistory();
 
-  const register = e => {
+  const register = async e => {
     e.preventDefault(); 
     // Check if passwords match 
     if(password !== password2) {
@@ -19,15 +19,15 @@ export default function Register(props) {
       return;
     }
     // Check if username is already taken
-    for(let user of props.users) {
-      if(user.username === username) {
-    // Put an alert if the username is already taken
-      alert("This username taken, Please try something else");
+    const res = await axios.get(
+      `/api/user?username=${username}`
+      );
+    if(res.data) {
+      alert("Username is taken, please try another one");
       return;
-      }
     }
 
-  // If passed both, Add new user into users
+   // If passed both, Add new user into users
     const newUser = {
       _id: uuid.v4(),    // <-- putting a UUID here, a library to create unique IDs
       username: username,
@@ -36,10 +36,9 @@ export default function Register(props) {
       lastName: "",
       email: ""
     };
-
-    props.addUser(newUser);
-  // Navigate user into his profile
-   history.push(`/user/${newUser._id}`);
+    await axios.post("/api/user", newUser);
+    // Navigate user into his profile
+    history.push(`/user/${newUser._id}`);
   };
 
   return (

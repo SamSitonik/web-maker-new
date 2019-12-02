@@ -1,3 +1,4 @@
+// Good 12/2/19
 // Import express library
 const express = require("express");
 // Import path module
@@ -6,7 +7,13 @@ const path = require("path");
 const app = express();
  
 // Initialize it
-app.use(express.json()) 
+app.use(express.json()); 
+
+// Define Routes (Using code from A4, copy/paste)
+app.use("/api/user", require("./routes/user"));
+// app.use("/api/website", require("./routes/website"));
+// app.use("/api/page", require("./routes/page"));
+// app.use("/api/widget", require("./routes/widget"));
  
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
