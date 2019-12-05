@@ -1,3 +1,4 @@
+// done 12/5/19
 const express = require("express");
 const router = express.Router();
 
@@ -54,7 +55,7 @@ router.post("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   let user = null;
-  for (let i = 0; i< users.length; i++) {
+  for (let i = 0; i < users.length; i++) {
     if (users[i]._id === id) {
       user = users[i];
     }
@@ -72,7 +73,6 @@ router.put("/", (req, res) => {
   }
   res.json(newUser);
 });
-
 
 module.exports = router;
 

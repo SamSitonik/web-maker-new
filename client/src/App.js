@@ -20,10 +20,6 @@ import WidgetChooser from "./components/widget/WidgetChooser";
 import WidgetEdit from "./components/widget/WidgetEdit";
 
 function App() {
-
-  // WebsiteService Data-Dummy Data from Shiyu
-  const [websites, setWebsites] = useState();
-
   // PageService Data
   const [pages, setPages] = useState([
     { _id: "321", name: "Post 1", websiteId: "456", title: "Lorem" },
@@ -40,78 +36,19 @@ function App() {
     { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://www.youtube.com/embed/X1JjPS40a-E" }
   ]);
 
-  // REMOVED to server side 12/2/19-- Add a new user into users
-  // const addUser = user => {
-  //   setUsers([...users, user]); // <--spread operator, incl. new user
-  // };
+  // REMOVED to server side 12/5/19
 
-  // REMOVED to server side 12/2/19--Update user by ID
-  // const updateUser = newUser => {
-  //   setUsers(
-  //     users.map(user => {
-  //       if (user._id === newUser._id) {
-  //         return newUser;
-  //       } else {
-  //         return user;
-  //       }
-  //     })
-  //   );
-  // };
-
-//   // Get websites by user ID
-// const getWebsites = uid => {
-//   const curWebs =[];
-//   for (let website of websites) {
-//     if (website.developerId === uid) {
-//       curWebs.push(website);
-//     }
-//   }
-//   return curWebs;
-// };
-
-// // getWebsite
-// const getWebsite = wid => {
-//   for (let website of websites) {
-//     if (website._id === wid) {
-//       return website;
-//     }
-//   }
-// };
-
-// // Add new website
-// const addWebsite = newWeb => {
-//   setWebsites([...websites, newWeb]);
-// };
-
-// // Remove website
-// const removeWebsite = wid => {
-//   setWebsites(websites.filter(website => website._id !== wid));
-// };
-
-// // Update website
-// const updateWebsite = newWeb => {
-//   setWebsites(
-//     websites.map(website => {
-//       if (website._id === newWeb._id) {
-//         return newWeb;
-//       } else {
-//         return website;
-//       }
-//     })
-//   );
-// };
-
-// Get pages by website ID
+// get pages by website ID
 const getPages = wid => {
   return pages.filter(page => page.websiteId === wid);
 };
 
-// Add new page into pages
+// add new page into pages
 const addPage = newPage => {
   setPages([...pages, newPage]);
 };
 
-// Get page by pid
+// get Page by pid
 const getPage = pid => {
   for (let page of pages) {
     if (page._id === pid) {
@@ -120,12 +57,12 @@ const getPage = pid => {
   }
 };
 
-// Remove page by pid
+// remove Page by pid
 const removePage = pid => {
   setPages(pages.filter(page => page._id !== pid));
 };
 
-// Update Page
+// update Page
 const updatePage = newPage => {
   setPages(
     pages.map(page => {
@@ -138,12 +75,12 @@ const updatePage = newPage => {
   );
 };
 
-// Get Widgets by page ID
+// get Widgets by page ID
 const getWidgets = pid => {
   return widgets.filter(widget => widget.pageId === pid);
 };
 
-// Get Widget by Widget ID
+// get Widget by widget ID
 const getWidget = wgid => {
   for (let widget of widgets) {
     if (widget._id === wgid) {
@@ -152,17 +89,17 @@ const getWidget = wgid => {
   }
 };
 
-// Add Widget
+// add Widget
 const addWidget = newWidget => {
   setWidgets([...widgets, newWidget]);
 };
 
-// Remove widget
+// remove widget
 const removeWidget = wgid => {
   setWidgets(widgets.filter(widget => widget._id !== wgid));
 };
 
-// Update Widget
+// update Widget
 const updateWidget = newWidget => {
   setWidgets(
     widgets.map(widget => {
@@ -190,19 +127,15 @@ const updateWidget = newWidget => {
         </Route>
         {/* WebsiteService */}
         <Route exact path="/user/:uid/website">
-          <WebsiteList getWebsites={getWebsites} />
+          <WebsiteList />
         </Route>
         <Route exact path="/user/:uid/website/new">
-          <WebsiteNew getWebsites={getWebsites} addWebsite={addWebsite} />
+          <WebsiteNew />
         </Route>
         <Route exact path="/user/:uid/website/:wid">
-          <WebsiteEdit
-            getWebsites={getWebsites}
-            getWebsite={getWebsite}
-            removeWebsite={removeWebsite}
-            updateWebsite={updateWebsite}
-          />
+          <WebsiteEdit />
         </Route>
+        
         {/* PageService */}
         <Route exact path="/user/:uid/website/:wid/page">
           <PageList getPages={getPages} />

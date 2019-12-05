@@ -1,7 +1,7 @@
-// DONE
-
+// DONE 12/5/09
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function Profile(props) {
   const [username, setUsername] = useState("");
@@ -12,20 +12,22 @@ export default function Profile(props) {
 
   const params = useParams();
 
-  useEffect(() => {
-    for (let user of props.users) {
-      if (user._id === params.uid) {
-        setUsername(user.username);
-        setEmail(user.email);
-        setFirstName(user.firstName);
-        setLastName(user.lastName);
-        setPassword(user.password);
-        return;
-      }
-    }
-  }, [params.uid, props.users]);
+  const getUser = async () => {
+    const res = await axios.get(`/api/user/${params.uid}`);
+    const user = res.data;
+    setUsername(user.username);
+    setEmail(user.email);
+    setFirstName(user.firstName);
+    setLastName(user.lastName);
+    setPassword(user.password);
+  };
 
-  const update = () => {
+  useEffect(() => {
+    getUser();
+    // eslint-disable-next-line
+  }, []);
+
+  const update = async () => {
     const newUser = {
       _id: params.uid,
       username: username,
@@ -34,11 +36,11 @@ export default function Profile(props) {
       firstName: firstName,
       lastName: lastName
     };
-
+        
     // Update user in users
-    props.updateUser(newUser);
+    await axios.put("/api/user", newUser);
 
-    alert("User info updated");
+    alert("User info is updated!");
   };
 
   return (
