@@ -1,4 +1,4 @@
-// Good 12/5/19
+// Good 12/6/19
 // Import express library
 const express = require("express");
 // Import path module
@@ -12,7 +12,7 @@ app.use(express.json());
 // Define Routes (Using code from A4, copy/paste)
 app.use("/api/user", require("./routes/user"));
 app.use("/api/website", require("./routes/website"));
-// app.use("/api/page", require("./routes/page"));
+app.use("/api/page", require("./routes/page"));
 // app.use("/api/widget", require("./routes/widget"));
  
 // Serve static assets in production

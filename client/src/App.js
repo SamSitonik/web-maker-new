@@ -20,13 +20,6 @@ import WidgetChooser from "./components/widget/WidgetChooser";
 import WidgetEdit from "./components/widget/WidgetEdit";
 
 function App() {
-  // PageService Data
-  const [pages, setPages] = useState([
-    { _id: "321", name: "Post 1", websiteId: "456", title: "Lorem" },
-    { _id: "432", name: "Post 2", websiteId: "456", title: "Lorem" },
-    { _id: "543", name: "Post 3", websiteId: "456", title: "Lorem" }
-  ]);
-
   // WidgetService Data
   const [widgets, setWidgets] = useState([
     { _id: "123", widgetType: "HEADING", pageId: "321", size: "2", text: "GIZMODO" },
@@ -36,44 +29,7 @@ function App() {
     { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://www.youtube.com/embed/X1JjPS40a-E" }
   ]);
 
-  // REMOVED to server side 12/5/19
-
-// get pages by website ID
-const getPages = wid => {
-  return pages.filter(page => page.websiteId === wid);
-};
-
-// add new page into pages
-const addPage = newPage => {
-  setPages([...pages, newPage]);
-};
-
-// get Page by pid
-const getPage = pid => {
-  for (let page of pages) {
-    if (page._id === pid) {
-      return page;
-    }
-  }
-};
-
-// remove Page by pid
-const removePage = pid => {
-  setPages(pages.filter(page => page._id !== pid));
-};
-
-// update Page
-const updatePage = newPage => {
-  setPages(
-    pages.map(page => {
-      if (page._id === newPage._id) {
-        return newPage;
-      } else {
-        return page;
-      }
-    })
-  );
-};
+  // REMOVED pages functions to server side 12/6/19
 
 // get Widgets by page ID
 const getWidgets = pid => {
@@ -135,21 +91,17 @@ const updateWidget = newWidget => {
         <Route exact path="/user/:uid/website/:wid">
           <WebsiteEdit />
         </Route>
-        
         {/* PageService */}
         <Route exact path="/user/:uid/website/:wid/page">
-          <PageList getPages={getPages} />
+          <PageList />
         </Route>
         <Route exact path="/user/:uid/website/:wid/page/new">
-          <PageNew addPage={addPage} />
+          <PageNew />
         </Route>
         <Route exact path="/user/:uid/website/:wid/page/:pid">
-          <PageEdit
-            getPage={getPage}
-            removePage={removePage}
-            updatePage={updatePage}
-          />
+          <PageEdit />
         </Route>
+
         {/* WidgetService */}
         <Route exact path="/user/:uid/website/:wid/page/:pid/widget">
           <WidgetList getWidgets={getWidgets} />
