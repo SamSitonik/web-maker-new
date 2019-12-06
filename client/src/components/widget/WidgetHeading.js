@@ -1,5 +1,4 @@
-// Review. Done
-
+// Done
 import React from "react";
 import { Link, useParams } from "react-router-dom"; 
 
@@ -76,9 +75,8 @@ export default function WidgetHeading(props) {
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
         <Link 
-        to={`/user/${params.uid}`} className="text-dark"
-        className="text-dark">
-          <i className="fas fa-user" />
+        to={`/user/${params.uid}`} className="text-dark">
+          <i className="fas fa-user"  />
         </Link>
       </footer>
     </div>

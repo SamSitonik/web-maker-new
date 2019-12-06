@@ -1,6 +1,7 @@
-// Review. Done
+// Done 12-6-19
 import React, {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom"; 
+import axios from "axios";
 
 export default function WidgetList(props) {
   const params = useParams();
@@ -8,9 +9,14 @@ export default function WidgetList(props) {
   const [widgets, setWidgets] = useState([]);
 
   useEffect(() => {
-    setWidgets(props.getWidgets(params.pid));
-  }, [props, params.pid]);
+    getWidgets();
+    // eslint-disable-next-line
+  }, []);
 
+  const getWidgets = async () => {
+    const res = await axios.get(`/api/widget/page/${params.pid}`);
+    setWidgets(res.data);
+  };
 
   return (
     <div>
@@ -62,7 +68,10 @@ export default function WidgetList(props) {
               </div>
             )}
             {widget.widgetType === "YOUTUBE" && (
-              <div style={{width: widget.width}} className="embed-responsive embed-responsive-16by9">
+              <div 
+                style={{width: widget.width}}   
+                className="embed-responsive embed-responsive-16by9"
+                >
                 <iframe
                   src={widget.url}
                   title="video"
@@ -88,11 +97,7 @@ export default function WidgetList(props) {
     </div>
   );
 }
-      
- 
-
-
-
+    
 
       //     <h1>GIZMODO</h1>
       //   </section>

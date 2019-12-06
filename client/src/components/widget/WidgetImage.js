@@ -1,4 +1,4 @@
-// Review.Done
+// Done
 import React from "react";
 import { Link, useParams } from "react-router-dom"; 
 
@@ -89,7 +89,6 @@ export default function WidgetImage(props) {
           <button 
           type="button"
           className="btn btn-primary btn-block">Upload Image</button>
-
           <button 
           onClick={props.remove} 
           className="btn btn-danger btn-block">
