@@ -45,7 +45,7 @@ export default function WidgetList(props) {
         {widgets.map(widget => (
           <section key={widget._id}>
           {/* div to create the ICONS 1st, both icons. float-right won't work right here, so we had to use "absolute-right" */}
-          <div className="position-absolute absolute-right p-1 bg-light rounded-left">
+          <div className="position-absolute absolute-right p-1 bg-light rounded-left front">
             <Link 
             to={`/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget/${widget._id}`}>
               <i className="fas fa-cog" />
@@ -98,7 +98,6 @@ export default function WidgetList(props) {
   );
 }
     
-
       //     <h1>GIZMODO</h1>
       //   </section>
       //   {/* Smaller Heading*/}

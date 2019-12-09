@@ -46,10 +46,9 @@ export default function WebsiteNew(props) {
               to={`/user/${params.uid}/website`}>
                 <i className="fas fa-chevron-left" />
               </Link>
-              <span className="navbar-brand h1 mb-0 ml-4">Websites</span>
+              <span className="navbar-brand mb-0 h1 ml-4">Websites</span>
             </div>
-            <Link className="text-light" 
-            to={`/user/${params.uid}/website/new`}>
+            <Link className="text-light" to={`/user/${params.uid}/website/new`}>
               <i className="fas fa-plus" />
             </Link>
           </div>
@@ -109,11 +108,11 @@ export default function WebsiteNew(props) {
                 <Link to="/user/:uid/website/:wid/page">Blogger App</Link>
                 <Link className="float-right" to="/user/:uid/website/:wid">
                   <i className="fas fa-cog" />
-                </Link> */}
+</Link> */}
      
         {/* right body */}
         <section className="col-lg-9">
-          <div className="container-fluid">
+          <div className="container">
             <form onSubmit={submit} id="websiteForm">
               <div className="form-group">
                 <label htmlFor="name">Name</label>

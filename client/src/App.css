@@ -8,6 +8,8 @@ label {
   font-weight: bold;
   /* for the underlines on the links */
 }
+
+a,
 a:hover {
   text-decoration: none;
 }

@@ -53,7 +53,6 @@ function App() {
         <Route exact path="/user/:uid/website/:wid/page/:pid">
           <PageEdit />
         </Route>
-
         {/* WidgetService */}
         <Route exact path="/user/:uid/website/:wid/page/:pid/widget">
           <WidgetList />

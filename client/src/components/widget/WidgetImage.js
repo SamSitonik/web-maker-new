@@ -1,4 +1,3 @@
-// Done
 import React from "react";
 import { Link, useParams } from "react-router-dom"; 
 
@@ -18,13 +17,10 @@ export default function WidgetImage(props) {
             Widget Edit
           </span>
         </div>
-        <button 
-        className="text-dark btn" 
-        form="widgetForm">
+        <button className="text-dark btn" form="widgetForm">
           <i className="fas fa-check" />
         </button>
       </nav>
-
       {/* body */}
       <main className="container">
         <form id="widgetForm" onSubmit={props.update}>
@@ -32,7 +28,7 @@ export default function WidgetImage(props) {
             <label htmlFor="name">Name</label>
             <input
               type="text"
-              // id="name"
+              id="name"
               className="form-control"
               placeholder="Enter Widget Name..."
               name="name"
@@ -46,7 +42,7 @@ export default function WidgetImage(props) {
               type="text"
               className="form-control"
               placeholder="Enter Widget Text..."
-              // id="text"
+              id="text"
               name="text"
               value={props.widget.text? props.widget.text : ""}
               onChange={props.onChange}
@@ -59,7 +55,7 @@ export default function WidgetImage(props) {
               type="text"
               className="form-control"
               placeholder="Enter Image Address..."
-              // id="url"
+              id="url"
               name="url"
               value={props.widget.url? props.widget.url : ""}
               onChange={props.onChange}
@@ -74,7 +70,7 @@ export default function WidgetImage(props) {
               max={100}
               className="form-control"
               placeholder="100%"
-              // id="width"
+              id="width"
               name="width"
               value={props.widget.width? props.widget.width : "100"}
               onChange={props.onChange}
@@ -86,12 +82,10 @@ export default function WidgetImage(props) {
             <input type="file" className="form-control" id="upload" />
           </div>
           {/* before I had "a href then to "to but we put button on the last 3 pages for now, I think because the upload isn't going anywhere for now, (it's a dummy button) */}
+          <button type="button" className="btn btn-primary btn-block">Upload Image</button>
           <button 
-          type="button"
-          className="btn btn-primary btn-block">Upload Image</button>
-          <button 
-          onClick={props.remove} 
-          className="btn btn-danger btn-block">
+            className="btn btn-danger btn-block"
+              onClick={props.remove}>
             Delete
           </button>
         </form>
@@ -99,9 +93,7 @@ export default function WidgetImage(props) {
       {/* bottom navbar */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <Link 
-        className="text-dark" 
-        to={`/user/${params.uid}`}>
+        <Link to={`/user/${params.uid}`} className="text-dark">
           <i className="fas fa-user" />
         </Link>
       </footer>

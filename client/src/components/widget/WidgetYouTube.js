@@ -15,24 +15,20 @@ export default function WidgetYouTube(props) {
           className="text-dark">
             <i className="fas fa-chevron-left" />
           </Link>
-          <span className="navbar-brand h1 ml-4 mb-0 text-secondary">
-            Widget Edit
-          </span>
+          <span className="navbar-brand h1 mb-0 ml-4  text-secondary">Widget Edit</span>
         </div>
         <button
-        className="text-dark btn" 
-        form="widgetForm">
+        className="text-dark btn" form="widgetForm">
           <i className="fas fa-check" />
         </button>
       </nav>
-
       <main className="container">
         <form id="widgetForm" onSubmit={props.update}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
               type="text"
-              // id="name"
+              id="name"
               className="form-control"
               placeholder="Enter Widget Name..."
               name="name"
@@ -46,7 +42,7 @@ export default function WidgetYouTube(props) {
               type="text"
               className="form-control"
               placeholder="Enter Widget Text..."
-              // id="text"
+              id="text"
               name="text"
               value={props.widget.text?props.widget.text: ""}
               onChange={props.onChange}
@@ -58,7 +54,7 @@ export default function WidgetYouTube(props) {
               type="text"
               className="form-control"
               placeholder="Enter YouTube Address..."
-              // id="url"
+              id="url"
               name="url"
               value={props.widget.url?props.widget.url: ""}
               onChange={props.onChange}
@@ -71,7 +67,7 @@ export default function WidgetYouTube(props) {
               min={1}
               max={100}
               className="form-control"
-              // id="width"
+              id="width"
               name="width"
               value={props.widget.width?props.widget.width: "100%"}
               onChange={props.onChange}
@@ -88,9 +84,7 @@ export default function WidgetYouTube(props) {
       {/* bottom navbar */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
         <span />
-        <Link 
-        className="text-dark" 
-        to={`/user/${params.uid}`}>
+        <Link to={`/user/${params.uid}`} className="text-dark">
           <i className="fas fa-user" />
         </Link>
       </footer>

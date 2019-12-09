@@ -64,10 +64,9 @@ export default function PageEdit(props) {
             <label htmlFor="name">Name</label>
             <input
               type="text"
-              // id="name"
+              id="name"
               className="form-control"
               placeholder="Enter page name..."
-              // defaultValue="Blog Post"
               value={name}
               onChange={e => setName(e.target.value)}
             />
@@ -78,7 +77,7 @@ export default function PageEdit(props) {
               type="text"
               className="form-control"
               placeholder="Enter page title..."
-              // id="title"
+              id="title"
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
@@ -86,7 +85,8 @@ export default function PageEdit(props) {
           <button 
             type="button"
             className="btn btn-danger btn-block">
-            onClick={remove}>
+            onClick={remove}
+            >
               Delete
           </button>
         </form>
