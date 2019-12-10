@@ -9,6 +9,7 @@ const widget = [
   { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://www.youtube.com/embed/X1JjPS40a-E" }
 ]; 
 
+
 // Create new widget
 router.post("/", (req, res) => {
   const newWidget = req.body;
@@ -16,7 +17,7 @@ router.post("/", (req, res) => {
   res.json(newWidget);
 });
 
-// Get all widgets by given page ID 
+// Get all widgets by given page id
 router.get("/page/:pid", (req, res) => {
   const pid = req.params.pid;
   const currentWidgets = [];
@@ -29,7 +30,7 @@ router.get("/page/:pid", (req, res) => {
   res.json(currentWidgets);
 });
 
-// Get widgets by given ID
+// get widget by given id
 router.get("/:wgid", (req, res) => {
   const wgid = req.params.wgid;
   let widget = null;
@@ -58,7 +59,7 @@ router.delete("/:wgid", (req, res) => {
   const wgid = req.params.wgid;
   for (let i = 0; i < widgets.length; i++) {
     if (widgets[i]._id === wgid) {
-      widgets.splice(i,1);
+      widgets.splice(i, 1);
     }
   }
   res.json(widgets);
