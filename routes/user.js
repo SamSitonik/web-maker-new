@@ -1,11 +1,8 @@
-// done 12/5/19
+// check 12/11/19
 const express = require("express");
 const router = express.Router();
 
-// TEST send hello to client-it works!
-// router.get("/", (req, res) => {
-//   res.json("Hello");
-// });
+
 
 const users = [
   { _id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com" },
@@ -47,7 +44,7 @@ if (!user) {
 // Create new user
 router.post("/", (req, res) => {
   const newUser = req.body; 
-  users.push(newUser);
+  cosnt user = await 
   res.json(newUser);
 });
 

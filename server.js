@@ -1,12 +1,12 @@
-// Good 12/6/19
-// Import express library
+// check 12/11/19
 const express = require("express");
-// Import path module
 const path = require("path");
-// Init express
 const app = express();
+const connectDB = require("./config/db");
+
+// Connect DB (file from db.js could all be here, but we just want to separate code into different files to make it more readable. So we can just call the function right here.)
+connectDB();
  
-// Initialize it
 app.use(express.json()); 
 
 // Define Routes (Using code from A4, copy/paste)
