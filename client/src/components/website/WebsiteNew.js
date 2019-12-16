@@ -1,7 +1,6 @@
 //Done 12-5-19
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import uuid from "uuid";
 import axios from "axios";
 
 export default function WebsiteNew(props) {
@@ -26,7 +25,6 @@ export default function WebsiteNew(props) {
   const submit = async e => {
     e.preventDefault();
     const newWeb = {
-      _id: uuid.v4(),
       name: name,
       description: description,
       developerId: params.uid
@@ -89,27 +87,6 @@ export default function WebsiteNew(props) {
             </ul>
           </div>
         </aside>
-{/*  OMIT because we have the NEW function             
-                <Link to="/user/:uid/website/:wid/page">Blogging App</Link>
-                             </li>
-              <li className="list-group-item">
-                <Link to="/user/:uid/website/:wid/page">Address Book App</Link>
-                <Link className="float-right" to="/user/:uid/website/:wid">
-                  <i className="fas fa-cog" />
-                </Link>
-              </li>
-              <li className="list-group-item">
-                <Link to="/user/:uid/website/:wid/page">Script Testing App</Link>
-                <Link className="float-right" to="/user/:uid/website/:wid">
-                  <i className="fas fa-cog" />
-                </Link>
-              </li>
-              <li className="list-group-item">
-                <Link to="/user/:uid/website/:wid/page">Blogger App</Link>
-                <Link className="float-right" to="/user/:uid/website/:wid">
-                  <i className="fas fa-cog" />
-</Link> */}
-     
         {/* right body */}
         <section className="col-lg-9">
           <div className="container">
@@ -131,7 +108,6 @@ export default function WebsiteNew(props) {
                   className="form-control"
                   placeholder="Enter website description..."
                   rows={5}
-                  // defaultValue={" "}
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                 />
@@ -144,7 +120,7 @@ export default function WebsiteNew(props) {
       <footer className="navbar navbar-dark bg-primary fixed-bottom">
         <span />
         <Link className="text-light" 
-        to={`/user/${params.uid}`}>
+          to={`/user/${params.uid}`}>
           <i className="fas fa-user" />
         </Link>
       </footer>

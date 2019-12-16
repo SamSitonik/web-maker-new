@@ -33,10 +33,9 @@ export default function Register(props) {
       lastName: "",
       email: ""
     };
-    await axios.post("/api/user", newUser);
-    console.log(newUser);
+    const res2 = await axios.post("/api/user", newUser);
     // Navigate user into his profile
-    history.push(`/user/${newUser._id}`);
+    history.push(`/user/${res2.data._id}`);
   };
 
   return (
@@ -47,8 +46,6 @@ export default function Register(props) {
           <input
             type="text"
             className="form-control"
-            // id="username"
-            // aria-describedby="usernameHelp"
             placeholder="Username"
             value={username}
             onChange={e=> setUsername(e.target.value)}
@@ -58,7 +55,6 @@ export default function Register(props) {
           <input
             type="password"
             className="form-control"
-            // id="password"
             placeholder="Password"
             value={password}
             onChange={e=> setPassword(e.target.value)}
@@ -67,15 +63,13 @@ export default function Register(props) {
         <div className="form-group">
           <input
             type="password"
-            className="form-control"
-            // id="verify password"
+            className= "form-control"
             placeholder="Verify Password"
             value={password2}
             onChange={e=> setPassword2(e.target.value)}
           />
         </div>
-        <button className="btn btn-primary btn-block">
-          Register
+        <button className="btn btn-primary btn-block">Register
         </button>
         <Link className="btn btn-danger btn-block" 
         to="/login">
