@@ -1,7 +1,6 @@
-// Done 12-6-19
+// Good 12-16-19
 import React, { useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom"; 
-import uuid from "uuid";
 import axios from "axios";
 
 export default function PageNew(props) {
@@ -14,7 +13,6 @@ export default function PageNew(props) {
   const submit = async e => {
     e.preventDefault();
     const newPage = {
-      _id: uuid.v4(),
       name: name, 
       title: title,
       websiteId: params.wid
@@ -50,7 +48,7 @@ export default function PageNew(props) {
               type="text"
               className="form-control"
               placeholder="Enter page name..."
-              // id="name"
+              id="name"
               value={name}
               onChange={e => setName(e.target.value)}
             />
@@ -61,7 +59,7 @@ export default function PageNew(props) {
               type="text"
               className="form-control"
               placeholder="Enter page title..."
-              // id="title"
+              id="title"
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
@@ -70,7 +68,6 @@ export default function PageNew(props) {
       </main>
       {/* bottom navbar */}
       <footer className="navbar navbar-light bg-light fixed-bottom">
-        <span />
         <Link 
         to={`/user/${params.uid}`}
         className="text-dark">
