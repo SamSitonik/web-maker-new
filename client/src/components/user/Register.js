@@ -1,7 +1,6 @@
-// DONE
+// DONE 12-16-19
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import uuid from "uuid";
 import axios from "axios";
 
 export default function Register(props) {
@@ -20,16 +19,14 @@ export default function Register(props) {
     }
     // Check if username is already taken
     const res = await axios.get(
-      `/api/user?username=${username}`
-      );
+      `/api/user?username=${username}`);
     if(res.data) {
       alert("Username is taken, please try another one");
       return;
     }
 
-   // If passed both, Add new user into users
+   // Add new user into users, (If passed both)
     const newUser = {
-      _id: uuid.v4(),    // <-- putting a UUID here, a library to create unique IDs
       username: username,
       password: password,
       firstName: "",
@@ -37,6 +34,7 @@ export default function Register(props) {
       email: ""
     };
     await axios.post("/api/user", newUser);
+    console.log(newUser);
     // Navigate user into his profile
     history.push(`/user/${newUser._id}`);
   };
