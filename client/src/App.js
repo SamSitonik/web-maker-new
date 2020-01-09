@@ -1,4 +1,4 @@
-// DONE 12-6-19
+// DONE 1-9-19
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -18,6 +18,8 @@ import PageEdit from "./components/page/PageEdit";
 import WidgetList from "./components/widget/WidgetList";
 import WidgetChooser from "./components/widget/WidgetChooser";
 import WidgetEdit from "./components/widget/WidgetEdit";
+//Routing Components
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 function App() {
   return (
@@ -30,19 +32,24 @@ function App() {
         <Route exact path="/register">
           <Register />
         </Route>
-        <Route exact path="/user/:uid">
+
+        <PrivateRoute exact path="/user/:uid">
           <Profile />
-        </Route>
+        </PrivateRoute>
+
         {/* WebsiteService */}
-        <Route exact path="/user/:uid/website">
+        <PrivateRoute exact path="/user/:uid/website">
           <WebsiteList />
-        </Route>
-        <Route exact path="/user/:uid/website/new">
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/user/:uid/website/new">
           <WebsiteNew />
-        </Route>
-        <Route exact path="/user/:uid/website/:wid">
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/user/:uid/website/:wid">
           <WebsiteEdit />
-        </Route>
+        </PrivateRoute>
+
         {/* PageService */}
         <Route exact path="/user/:uid/website/:wid/page">
           <PageList />
