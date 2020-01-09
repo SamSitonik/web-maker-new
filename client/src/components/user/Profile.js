@@ -49,7 +49,7 @@ export default function Profile(props) {
       <nav className="navbar navbar-dark bg-primary fixed-top">
         <span className="navbar-brand h1 mb-0 ml-4">Profile</span>
         <span className="click" onClick={update}>
-          <i className="fas fa-check" text-light></i>
+          <i className="fas fa-check text-light"></i>
         </span>
       </nav>
       <main className="container">

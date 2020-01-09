@@ -16,7 +16,7 @@ export default function WebsiteNew(props) {
     getWebsites();
     // eslint-disable-next-line
   }, []);
-  
+
   const getWebsites = async () => {
     const res = await axios.get(`/api/website/user/${params.uid}`);
     setWebsites(res.data);
@@ -35,52 +35,54 @@ export default function WebsiteNew(props) {
 
   return (
     <div>
-      <nav className="navbar navbar-dark bg-primary fixed-top row">
+      <nav className='navbar-dark bg-primary fixed-top row'>
         {/* Left navbar */}
-        <div className="col-lg-3 d-none d-lg-block">
-          <div className="navbar">
+        <div className='col-lg-3 d-none d-lg-block'>
+          <div className='navbar'>
             <div>
-              <Link className="text-light" 
-              to={`/user/${params.uid}/website`}>
-                <i className="fas fa-chevron-left" />
+              <Link className='text-light' to={`/user/${params.uid}/website`}>
+                <i className='fas fa-chevron-left' />
               </Link>
-              <span className="navbar-brand mb-0 h1 ml-4">Websites</span>
+              <span className='navbar-brand mb-0 h1 ml-4'>Websites</span>
             </div>
-            <Link className="text-light" to={`/user/${params.uid}/website/new`}>
-              <i className="fas fa-plus" />
+            <Link className='text-light' to={`/user/${params.uid}/website/new`}>
+              <i className='fas fa-plus' />
             </Link>
           </div>
         </div>
         {/* Right Navbar */}
-        <div className="col-lg-9 navbar">
+        <div className='col-lg-9 navbar'>
           <div>
-            <Link className="text-light d-lg-none " 
-            to={`/user/${params.uid}/website`}>
-              <i className="fas fa-chevron-left" />
+            <Link
+              className='text-light d-lg-none '
+              to={`/user/${params.uid}/website`}
+            >
+              <i className='fas fa-chevron-left' />
             </Link>
-            <span className="navbar-brand mb-0 h1 ml-4">New Website</span>
+            <span className='navbar-brand mb-0 h1 ml-4'>New Website</span>
           </div>
-          <button 
-          className="text-light btn" 
-          form="websiteForm">
-            <i className="fas fa-check" />
+          <button className='text-light btn' form='websiteForm'>
+            <i className='fas fa-check' />
           </button>
         </div>
       </nav>
       {/* left body */}
-      <main className="row">
-        <aside className="col-lg-3 d-none d-lg-block">
-          <div className="container">
-            <ul className="list-group list-group-flush">
+      <main className='row'>
+        <aside className='col-lg-3 d-none d-lg-block'>
+          <div className='container'>
+            <ul className='list-group list-group-flush'>
               {websites.map(website => (
-                <li key={website._id} className="list-group-item">
+                <li key={website._id} className='list-group-item'>
                   <Link
-                  to={`/user/${website.developerId}/website/${website._id}/page`}>
+                    to={`/user/${website.developerId}/website/${website._id}/page`}
+                  >
                     {website.name}
                   </Link>
-                  <Link className="float-right"
-                  to={`/user/${website.developerId}/website/${website._id}`}>
-                  <i className="fas fa-cog" />
+                  <Link
+                    className='float-right'
+                    to={`/user/${website.developerId}/website/${website._id}`}
+                  >
+                    <i className='fas fa-cog' />
                   </Link>
                 </li>
               ))}
@@ -88,25 +90,25 @@ export default function WebsiteNew(props) {
           </div>
         </aside>
         {/* right body */}
-        <section className="col-lg-9">
-          <div className="container">
-            <form onSubmit={submit} id="websiteForm">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
+        <section className='col-lg-9'>
+          <div className='container'>
+            <form onSubmit={submit} id='websiteForm'>
+              <div className='form-group'>
+                <label htmlFor='name'>Name</label>
                 <input
-                  type="text"
-                  placeholder="Enter website name..."
+                  type='text'
+                  placeholder='Enter website name...'
                   // id="name"
-                  className="form-control"
+                  className='form-control'
                   value={name}
                   onChange={e => setName(e.target.value)}
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="description">Description</label>
+              <div className='form-group'>
+                <label htmlFor='description'>Description</label>
                 <textarea
-                  className="form-control"
-                  placeholder="Enter website description..."
+                  className='form-control'
+                  placeholder='Enter website description...'
                   rows={5}
                   value={description}
                   onChange={e => setDescription(e.target.value)}
@@ -117,11 +119,10 @@ export default function WebsiteNew(props) {
         </section>
       </main>
       {/* bottom navbar */}
-      <footer className="navbar navbar-dark bg-primary fixed-bottom">
+      <footer className='navbar navbar-dark bg-primary fixed-bottom'>
         <span />
-        <Link className="text-light" 
-          to={`/user/${params.uid}`}>
-          <i className="fas fa-user" />
+        <Link className='text-light' to={`/user/${params.uid}`}>
+          <i className='fas fa-user' />
         </Link>
       </footer>
     </div>
