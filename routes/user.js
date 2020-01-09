@@ -1,19 +1,25 @@
-// Good 12/16/19
+// Good 1/9/20
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const config = require("config");
 const auth = require("../middleware/auth");
+const bcrypt = require("bcryptjs");
 
 // Login
 router.post("/login", async(req, res) => {
   const { username, password } = req.body;
-  let user = await User.findOne({ username: username, password: password });
-
+  // check if username is correct
+  let user = await User.findOne({ username: username });
   if(!user) {
     res.json(null);
   } else {
+    // Validate password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      res.json(null);
+    }
     const payload = {
       user: {
         id: user.id
@@ -58,27 +64,40 @@ router.get("/", async (req, res) => {
 // Create new user
 router.post("/register", async (req, res) => {
   const newUser = new User({ ...req.body });
-  const user = await newUser.save();
-  const payload = {
-    user: {
-      id: user.id
+  // Before we save new user into DB, we must encrypt
+  // Create salt & hash, 10 is default, the bigger the # the harder to encrypt, but takes more time to encrypt
+  bcrypt.genSalt(10, (error, salt) => {
+    if (error) {
+      throw error;
     }
-  };
-  jwt.sign(
-    payload,
-    config.get("jwtSecret"),
-    {
-      expiresIn: "1d"
-    },
-    (error, token) => {
+    bcrypt.hash(newUser.password, salt, async (error, hash) => {
       if (error) {
         throw error;
       }
-      res.json({ token, user });
-    }
-  );
+      newUser.password = hash;
+      const user = await newUser.save();
+      const payload = {
+        user: {
+          id: user.id
+        }
+      };
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        {
+          expiresIn: "1d"
+        },
+        (error, token) => {
+          if (error) {
+            throw error;
+          }
+          res.json({ token, user });
+        }
+      );
+    });
+  });
 });
-
+  
 // Find user by ID
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
