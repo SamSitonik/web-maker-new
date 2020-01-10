@@ -18,7 +18,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
     }
     try {
       await axios.get("/api/user/load");
-    } catch (error) {
+    } catch (err) {
       history.push("/login");
     }
   };
